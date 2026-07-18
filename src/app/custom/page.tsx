@@ -1,11 +1,12 @@
-import type { Metadata } from "next";
 import Link from "next/link";
+import { createPageMetadata } from "../lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
+  path: "/custom",
   title: "Codex 皮肤定制服务 | codexskin.top - 付费定制与品牌主题",
   description:
     "codexskin.top 提供 Codex 皮肤定制服务：免费社区版、个人定制（¥199）、团队定制（¥999）。专业的 Codex 换肤定制，包含皮肤、宠物、安装协助与品牌资产管理。",
-};
+});
 
 export default function CustomPage() {
   return (

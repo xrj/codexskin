@@ -1,11 +1,12 @@
-import type { Metadata } from "next";
 import Link from "next/link";
+import { createPageMetadata } from "../lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
+  path: "/install",
   title: "Codex 皮肤安装与恢复指南 | codexskin.top",
   description:
     "codexskin.top 提供详细的 Codex 皮肤安装指南，包括官方色彩主题配置、Dream Skin 引擎安装、Codex 宠物安装，以及完整的皮肤恢复教程。Windows 与 macOS 双平台支持。",
-};
+});
 
 export default function InstallPage() {
   return (

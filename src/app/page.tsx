@@ -291,6 +291,41 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* 指南入口 */}
+      <section className="py-20 border-t border-border bg-surface/50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="section-title">Codex 换肤指南入口</h2>
+            <p className="section-subtitle max-w-2xl mx-auto">从概念、安装到 Dream Skin 背景增强，按你当前的问题直接进入对应指南</p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-5">
+            {[
+              {
+                href: '/codex-skins-guide',
+                title: 'Codex 皮肤完整指南',
+                desc: '第一次了解 Codex 皮肤、主题、背景和宠物时，从这篇开始。',
+              },
+              {
+                href: '/codex-theme-installation',
+                title: 'Codex 主题安装教程',
+                desc: '按官方 Appearance、Dream Skin 和 Codex Pets 三条路径完成安装。',
+              },
+              {
+                href: '/codex-dream-skin',
+                title: 'Dream Skin 背景增强说明',
+                desc: '理解 Dream Skin 能做什么、不能做什么，以及如何安全恢复。',
+              },
+            ].map((guide) => (
+              <Link key={guide.href} href={guide.href} className="card p-6 no-underline group">
+                <h3 className="text-text font-semibold group-hover:text-accent transition-colors">{guide.title}</h3>
+                <p className="text-text-muted text-sm mt-2 leading-relaxed">{guide.desc}</p>
+                <span className="text-accent text-sm mt-4 inline-flex">阅读全文 →</span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* FAQ */}
       <section className="py-20 border-t border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

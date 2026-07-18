@@ -3,24 +3,73 @@ import Script from "next/script";
 import "./globals.css";
 import Header from "./_components/Header";
 import Footer from "./_components/Footer";
+import {
+  createJsonLd,
+  defaultDescription,
+  defaultKeywords,
+  defaultTitle,
+  siteName,
+  siteUrl,
+  sitemapRoutes,
+} from "./lib/seo";
 
 export const metadata: Metadata = {
-  title: "codexskin.top - Codex 换肤资源站 | 皮肤、宠物、工作台",
-  description:
-    "codexskin.top 是 Codex App 换肤一站式资源站，提供免费 Codex 皮肤下载、在线皮肤工作台、宠物库、Dream Skin 安装指南与皮肤定制服务。给 Codex 换一张脸，但别把信任交给一张图。",
-  keywords: [
-    "Codex换肤", "Codex皮肤", "Codex主题", "Codex背景", "Dream Skin",
-    "Codex宠物", "Codex外观", "codexskin", "代码编辑器换肤", "AI编程工具皮肤",
-    "Codex皮肤下载", "Codex皮肤制作", "Codex皮肤定制"
-  ],
+  metadataBase: new URL(siteUrl),
+  title: defaultTitle,
+  description: defaultDescription,
+  applicationName: siteName,
+  keywords: defaultKeywords,
+  alternates: {
+    canonical: `${siteUrl}/`,
+  },
+  manifest: "/manifest.webmanifest",
   robots: { index: true, follow: true },
   openGraph: {
-    title: "codexskin.top - Codex 换肤资源站",
-    description: "免费 Codex 皮肤、在线工作台、宠物库、Dream Skin 安装指南。",
-    url: "https://codexskin.top",
-    siteName: "codexskin.top",
+    title: defaultTitle,
+    description: defaultDescription,
+    url: `${siteUrl}/`,
+    siteName,
     locale: "zh_CN",
+    type: "website",
   },
+  twitter: {
+    card: "summary",
+    title: defaultTitle,
+    description: defaultDescription,
+  },
+};
+
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: siteName,
+  url: `${siteUrl}/`,
+  inLanguage: "zh-CN",
+  description: defaultDescription,
+  potentialAction: {
+    "@type": "SearchAction",
+    target: `${siteUrl}/skins?search={search_term_string}`,
+    "query-input": "required name=search_term_string",
+  },
+};
+
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: siteName,
+  url: `${siteUrl}/`,
+  description: "中文 Codex 换肤资源、教程与定制服务站点。",
+};
+
+const navigationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  itemListElement: sitemapRoutes.map((route, index) => ({
+    "@type": "SiteNavigationElement",
+    position: index + 1,
+    name: route.path === "" ? "首页" : route.path.replace("/", ""),
+    url: route.path === "" ? `${siteUrl}/` : `${siteUrl}${route.path}/`,
+  })),
 };
 
 export default function RootLayout({
@@ -43,6 +92,21 @@ export default function RootLayout({
             gtag('config', 'G-ETWEDM720K');
           `}
         </Script>
+        <Script
+          id="website-jsonld"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: createJsonLd(websiteJsonLd) }}
+        />
+        <Script
+          id="organization-jsonld"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: createJsonLd(organizationJsonLd) }}
+        />
+        <Script
+          id="navigation-jsonld"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: createJsonLd(navigationJsonLd) }}
+        />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

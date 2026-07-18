@@ -1,11 +1,12 @@
-import type { Metadata } from "next";
 import Link from "next/link";
+import { createPageMetadata } from "../lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
+  path: "/skins",
   title: "Codex 皮肤库 | codexskin.top - 精选 Codex 皮肤下载与预览",
   description:
     "codexskin.top Codex 皮肤库提供可商用、开源及个人使用的 Codex 皮肤下载。按动漫、极简、暗黑、国风等风格筛选 Codex 皮肤资源，每套皮肤标注授权状态与平台支持。",
-};
+});
 
 const allSkins = [
   { name: 'Rose Orbit', tag: '动漫', license: '可商用', type: '图片皮肤', platform: 'Dream Skin', source: '站内原创', platforms: ['Native', 'macOS', 'Windows'], supports: ['Home', 'Task', 'Diff'], color: 'from-rose-500/30 to-pink-600/30' },

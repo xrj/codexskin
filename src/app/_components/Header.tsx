@@ -7,6 +7,7 @@ import { useState } from 'react';
 const navItems = [
   { href: '/', label: '首页' },
   { href: '/skins', label: '皮肤库' },
+  { href: '/codex-skins-guide', label: '换肤指南' },
   { href: '/studio', label: '工作台' },
   { href: '/pets', label: '宠物库' },
   { href: '/install', label: '安装恢复' },

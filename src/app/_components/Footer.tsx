@@ -5,9 +5,11 @@ const footerLinks = [
     title: '资源',
     links: [
       { href: '/skins', label: '皮肤库' },
+      { href: '/codex-skins-guide', label: '换肤指南' },
       { href: '/pets', label: '宠物库' },
       { href: '/studio', label: '皮肤工作台' },
       { href: '/install', label: '安装与恢复' },
+      { href: '/codex-dream-skin', label: 'Dream Skin 说明' },
     ],
   },
   {

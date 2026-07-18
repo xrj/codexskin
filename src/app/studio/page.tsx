@@ -1,11 +1,12 @@
-import type { Metadata } from "next";
 import Link from "next/link";
+import { createPageMetadata } from "../lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
+  path: "/studio",
   title: "Codex 皮肤工作台 | codexskin.top - 在线预览与制作 Codex 皮肤",
   description:
     "codexskin.top Codex 皮肤工作台支持本地上传图片、调节背景位置与透明度、预览 Home/Task/Diff 效果，并导出 .dreamskin 数据包。在线 Codex 皮肤制作工具，免费使用。",
-};
+});
 
 export default function StudioPage() {
   return (

@@ -1,11 +1,12 @@
-import type { Metadata } from "next";
 import Link from "next/link";
+import { createPageMetadata } from "../lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
+  path: "/safety",
   title: "Codex 皮肤安全说明 | codexskin.top - 安全与隐私保护",
   description:
     "codexskin.top Codex 皮肤安全说明：皮肤是 inert 数据不含可执行代码，图片在浏览器本地处理不上传服务器，不读取 API Key 或项目配置。了解 Codex 换肤的信任边界。",
-};
+});
 
 export default function SafetyPage() {
   return (

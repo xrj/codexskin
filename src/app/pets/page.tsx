@@ -1,10 +1,11 @@
-import type { Metadata } from "next";
+import { createPageMetadata } from "../lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
+  path: "/pets",
   title: "Codex 宠物库 | codexskin.top - Codex Pets 资源与 Pet Lab",
   description:
     "codexskin.top Codex 宠物库提供官方风格、像素风、表情包风等 Codex 动画宠物资源。Pet Lab 支持 sprite 校验与 codex:// 安装链接生成。",
-};
+});
 
 const pets = [
   { name: 'Pixel Cat', style: '像素风', status: '可用', license: '可商用', states: ['Running', 'Needs input', 'Ready', 'Blocked'], color: 'from-orange-400/30 to-amber-500/30' },
